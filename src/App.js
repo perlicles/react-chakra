@@ -1,19 +1,14 @@
-import * as React from "react";
-import { ChakraProvider } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import Dashboard from "./components/Dashboard";
 
-function App() {
-
-  const sayHello = () => {
-    alert("Oi! Agora com Chakra!")
-  };
-
+const App = () => {
   return (
-    <ChakraProvider>
-      <h1>Hello React e Chakra</h1>
-      <Button onClick={sayHello} colorScheme="red">Click Aqui Para Dizer "Oi!"</Button>
-    </ChakraProvider>
-  );
+      <Box m='auto' mt={['0', '0', '2vh']} minHeight={['100vh', '100vh', '97vh']} rounded={['0', '0', 'xl']} w={['100vw', '100vw', '98vw']} p={['3', '5', '7']} minW='420px' style={{backgroundColor: '#dddddd'}} >
+        <Dashboard />
+      </Box>
+    
+  )
 }
 
-export default App;
+export default App
+
