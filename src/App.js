@@ -1,12 +1,31 @@
-import { Box } from "@chakra-ui/react";
 import Dashboard from "./components/Dashboard";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Home from './pages/Home'
+import Users from './pages/Users'
+import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
+import { useState } from 'react'
+import { Box } from "@chakra-ui/layout";
+
 
 const App = () => {
+  const [dimentionsSidebar, setDimentionsSidebar] = useState({});
+  const [ dimentionsNavbar, setDimentionsNavbar] = useState({});
+  console.log(dimentionsNavbar.height + 'px', dimentionsSidebar.width + 'px');
+
   return (
-      <Box m='auto' mt={['0', '0', '2vh']} minHeight={['100vh', '100vh', '97vh']} rounded={['0', '0', 'xl']} w={['100vw', '100vw', '98vw']} p={['3', '5', '7']} minW='420px' style={{backgroundColor: '#dddddd'}} >
-        <Dashboard />
-      </Box>
-    
+    <>
+    <Router>
+      <Switch>
+        <Box mt={dimentionsNavbar.height + 'px'} ml={dimentionsSidebar.width + 'px'}>
+        <Route path='/' exact component={Home}/>
+        <Route path='/users' component={Users} exact /> 
+        </Box>
+      </Switch>
+    <Sidebar onChangeDimentions={setDimentionsSidebar} zIndex={100}  />
+    <Navbar onChangeDimentions={setDimentionsNavbar} paddingLeft={dimentionsSidebar.width + 'px'} />
+    </Router>
+    </>
   )
 }
 

@@ -3,8 +3,8 @@ import { SidebarData } from '../externalData/SidebarData';
 import { useEffect } from 'react';
 import WebFont from "webfontloader";
 import FadeIn from "react-fade-in";
-import { Link, Router } from 'react-router-dom'
-import { createBrowserHistory } from 'history' 
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -28,18 +28,14 @@ const SidebarButtons = ({isOpen} ) => {
     )
   }
 
-  const history = createBrowserHistory();
-
     return (
-      <Router history ={history}>
-      <VStack m='auto' mt='0' w='100%'   
+      <VStack m='auto' mt='0' w='100%'  
       style= {
         isOpen
-          ? {width: '100%', transition: 'width 5s'}
-          : {width: 'auto', transition: 'width 0.5s'}
+          ? {width: '100%'}
+          : {width: 'auto'}
       }>
         {datas.map((data, index) => (
-
             <Button
               key={index}
               size='lg'
@@ -48,6 +44,7 @@ const SidebarButtons = ({isOpen} ) => {
               color={data.color}
               colorScheme={data.colorScheme}
               as={Link}
+              to={data.path}
             >
               <Flex w='100%' justifyContent='left'>
               <Box fontSize='0.9em'>{data.icon}</Box>
@@ -57,10 +54,8 @@ const SidebarButtons = ({isOpen} ) => {
                 }
               </Flex>
             </Button>
-          
           ))}
       </VStack>
-          </Router>
     )
 }
 

@@ -2,33 +2,41 @@ import { Box, Center, Flex, Divider, HStack } from "@chakra-ui/layout";
 import { MenuItem, MenuList, MenuButton, Menu } from "@chakra-ui/menu";
 import * as IoIcons from 'react-icons/io5';
 import WebFont from 'webfontloader';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import * as BiIcons from 'react-icons/bi';
-import { Avatar } from "@chakra-ui/react";
+import { Avatar, calc } from "@chakra-ui/react";
 import IconWithBadge from './IconWithBadge'
 import { ImStack } from 'react-icons/im'
 import NavbarLogo from "./NavbarLogo";
 
 
-const Navbar = () => {
+const Navbar = ({onChangeDimentions,...props}) => {
+
+  const node = useRef();
 
   useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Open Sans']
-      }
-    });
+    const { current } = node;
+    const width = current?.offsetWidth??0;
+    const height = current?.offsetHeight??0;
+    onChangeDimentions({
+      width: width,
+      height: height
+    })
   }, []);
 
 
   return (
     <Flex
-      w='100%'
+      ref={node}
       bg='white'
       h='90px'
+      width='100%'
       alignItems='flex-end'
       justifyContent='space-between'
-      borderRadius='0 45px 0 0'
+      position='fixed'
+      top={0}
+      {...props}
+
     >
 
     {/* Logo  */}

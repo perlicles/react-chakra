@@ -1,11 +1,6 @@
-import { Box, Flex, Wrap } from "@chakra-ui/react";
-import { Route, Router, Switch } from "react-router";
+import { Route, Switch } from "react-router";
 import Home from "../pages/Home";
 import Users from "../pages/Users";
-import HelloSection from './HelloSection'
-import HottestDiscussionBoards from "./HottestDiscussionBoards";
-import UpcomingBookins from "./UpcomingBookings";
-import UpcomingEvents from './UpcomingEvents';
 import {  createBrowserHistory } from 'history'
 
 const MainScreen = () => {
@@ -23,12 +18,9 @@ const MainScreen = () => {
 
     //   </Box>
     // </Flex>
-    <Router history={history}>
-      <Switch>
-        <Route path='/' component={Home} exact />
-        <Route path='/users' component={Users} exact /> 
-      </Switch>
-    </Router>
+      <>
+        
+      </>
   )
 }
 
